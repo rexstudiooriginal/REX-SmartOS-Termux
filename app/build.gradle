@@ -187,12 +187,6 @@ task downloadBootstraps() {
         }
     }
 }
-
-afterEvaluate {
-    android.applicationVariants.all { variant ->
-        variant.javaCompileProvider.get().dependsOn(downloadBootstraps)
-        variant.externalNativeBuildProviders.get().each {
-            it.dependsOn(downloadBootstraps)
         }
     }
 }

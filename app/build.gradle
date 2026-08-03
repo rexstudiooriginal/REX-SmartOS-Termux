@@ -85,13 +85,6 @@ android {
     testOptions { unitTests { includeAndroidResources = true } }
     packagingOptions { jniLibs { useLegacyPackaging true } }
 
-    // UDAH DIHAPUS YG ERROR. PAKE NAMA DEFAULT DULU
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            outputFileName = outputFileName
-        }
-    }
-
     buildFeatures {
         buildConfig true
     }
@@ -187,6 +180,12 @@ task downloadBootstraps() {
         }
     }
 }
+
+afterEvaluate {
+    android.applicationVariants.all { variant ->
+        variant.javaCompileProvider.get().dependsOn(downloadBootstraps)
+        variant.externalNativeBuildProviders.get().each {
+            it.dependsOn(downloadBootstraps)
         }
     }
 }

@@ -69,7 +69,7 @@ android {
     externalNativeBuild {
         ndkBuild {
             path "src/main/cpp/Android.mk"
-            cFlags "-std=c11", "-Wall", "-Wextra", "-Werror", "-Os", "-fno-stack-protector", "-Wl,--gc-sections"
+            
         }
     }
 

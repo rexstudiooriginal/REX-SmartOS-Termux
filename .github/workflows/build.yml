@@ -24,7 +24,7 @@ jobs:
       - name: Setup NDK
         uses: nttld/setup-ndk@v1
         with:
-          ndk-version: r29.0.14206865
+          ndk-version: 29.0.13113456
 
       - name: Build Debug APK
         run: ./gradlew :app:assembleFossDebug --stacktrace

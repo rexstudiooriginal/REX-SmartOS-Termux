@@ -98,10 +98,9 @@ android {
     buildFeatures { 
         buildConfig true 
     }
-
-    sourceSets {
-        main {
-            assets.srcDirs += ['src/main/cpp']
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
         }
     }
 }

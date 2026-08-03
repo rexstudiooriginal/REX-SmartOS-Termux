@@ -14,6 +14,7 @@ ext {
 
 android {
     namespace "com.rexsmart.termux"
+    applicationId "rex.smart.termux"
 
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
     ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion

@@ -349,7 +349,7 @@ public final class TermuxConstants {
     /** Termux app name */
     public static final String TERMUX_APP_NAME = "Termux"; // Default: "Termux"
     /** Termux package name */
-    public static final String TERMUX_PACKAGE_NAME = "com.rexsmart.termux"; // Default: "rex.smart.termux"
+    public static final String TERMUX_PACKAGE_NAME = "rex.smart.termux"; // Default: "rex.smart.termux"
     /** Termux GitHub repo name */
     public static final String TERMUX_GITHUB_REPO_NAME = "termux-app"; // Default: "termux-app"
     /** Termux GitHub repo url */

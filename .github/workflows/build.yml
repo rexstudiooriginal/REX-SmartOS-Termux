@@ -25,10 +25,10 @@ jobs:
         run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "ndk;29.0.13113456" "cmake;3.22.1"
 
       - name: Build Debug APK
-        run: ./gradlew :app:assembleFossDebug --stacktrace
+        run: ./gradlew :app:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: REX-SmartOS-Termux-debug
-          path: app/build/outputs/apk/foss/debug/*.apk
+          path: app/build/outputs/apk/debug/*.apk

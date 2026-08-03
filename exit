@@ -1,0 +1,68 @@
+[1mdiff --git a/app/build.gradle b/app/build.gradle[m
+[1mindex 33c88d1d..fe0e1563 100644[m
+[1m--- a/app/build.gradle[m
+[1m+++ b/app/build.gradle[m
+[36m@@ -13,7 +13,7 @@[m [mext {[m
+ }[m
+ [m
+ android {[m
+[31m-    namespace "com.termux"[m
+[32m+[m[32m    namespace "com.rexsmart.termux"[m
+ [m
+     compileSdkVersion project.properties.compileSdkVersion.toInteger()[m
+     ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion[m
+[36m@@ -51,8 +51,8 @@[m [mandroid {[m
+ [m
+         buildConfigField "String", "TERMUX_PACKAGE_VARIANT", "\"" + project.ext.packageVariant + "\"" // Used by TermuxApplication class[m
+ [m
+[31m-        manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.termux"[m
+[31m-        manifestPlaceholders.TERMUX_APP_NAME = "Termux"[m
+[32m+[m[32m        manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.rexsmart.termux"[m
+[32m+[m[32m        manifestPlaceholders.TERMUX_APP_NAME = "RexSmartOS"[m
+         manifestPlaceholders.TERMUX_API_APP_NAME = "Termux:API"[m
+         manifestPlaceholders.TERMUX_BOOT_APP_NAME = "Termux:Boot"[m
+         manifestPlaceholders.TERMUX_FLOAT_APP_NAME = "Termux:Float"[m
+[1mdiff --git a/app/src/main/res/xml/shortcuts.xml b/app/src/main/res/xml/shortcuts.xml[m
+[1mindex dcd8d341..36e7617e 100644[m
+[1m--- a/app/src/main/res/xml/shortcuts.xml[m
+[1m+++ b/app/src/main/res/xml/shortcuts.xml[m
+[36m@@ -18,7 +18,7 @@[m
+         tools:targetApi="n_mr1">[m
+         <intent[m
+             android:action="android.intent.action.RUN"[m
+[31m-            android:targetPackage="com.termux"[m
+[32m+[m[32m            android:targetPackage="com.rexsmart.termux"[m
+             android:targetClass="com.termux.app.TermuxActivity"[m
+             android:name="android.shortcut.conversation"/>[m
+     </shortcut>[m
+[36m@@ -31,7 +31,7 @@[m
+         tools:targetApi="n_mr1">[m
+         <intent[m
+             android:action="android.intent.action.RUN"[m
+[31m-            android:targetPackage="com.termux"[m
+[32m+[m[32m            android:targetPackage="com.rexsmart.termux"[m
+             android:targetClass="com.termux.app.TermuxActivity"[m
+             android:name="android.shortcut.conversation">[m
+             <extra android:name="com.termux.app.failsafe_session" android:value="true"/>[m
+[36m@@ -46,7 +46,7 @@[m
+         tools:targetApi="n_mr1">[m
+         <intent[m
+             android:action="android.intent.action.VIEW"[m
+[31m-            android:targetPackage="com.termux"[m
+[32m+[m[32m            android:targetPackage="com.rexsmart.termux"[m
+             android:targetClass="com.termux.app.activities.SettingsActivity"[m
+             android:name="android.shortcut.conversation"/>[m
+     </shortcut>[m
+[1mdiff --git a/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java b/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java[m
+[1mindex 534936ff..e6b62ef2 100644[m
+[1m--- a/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java[m
+[1m+++ b/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java[m
+[36m@@ -349,7 +349,7 @@[m [mpublic final class TermuxConstants {[m
+     /** Termux app name */[m
+     public static final String TERMUX_APP_NAME = "Termux"; // Default: "Termux"[m
+     /** Termux package name */[m
+[31m-    public static final String TERMUX_PACKAGE_NAME = "com.termux"; // Default: "com.termux"[m
+[32m+[m[32m    public static final String TERMUX_PACKAGE_NAME = "com.rexsmart.termux"; // Default: "com.termux"[m
+     /** Termux GitHub repo name */[m
+     public static final String TERMUX_GITHUB_REPO_NAME = "termux-app"; // Default: "termux-app"[m
+     /** Termux GitHub repo url */[m

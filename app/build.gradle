@@ -181,5 +181,37 @@ task downloadBootstraps() {
     }
 }
 
-// HAPUS TOTAL afterEvaluate NYA. BIAR GAK ERROR LAGI
-preBuild.dependsOn downloadBootstraps
+// TASK BARU: convert zip jadi .c biar gak error blob_size
+task generateBootstrapBlobs() {
+    dependsOn downloadBootstraps
+    doLast {
+        def cppDir = new File(projectDir, "src/main/cpp")
+        cppDir.mkdirs()
+        def outFile = new File(cppDir, "bootstrap_blobs.c")
+        
+        outFile.text = "#include <stddef.h>\n#include <stdint.h>\n\n"
+        
+        ["aarch64", "arm", "x86_64"].each { arch ->
+            def zipFile = new File(cppDir, "bootstrap-${arch}.zip")
+            if (zipFile.exists()) {
+                def bytes = zipFile.bytes
+                outFile << "const unsigned char bootstrap_${arch}[] = {"
+                bytes.eachWithIndex { b, i ->
+                    if (i % 16 == 0) outFile << "\n  "
+                    outFile << String.format("0x%02x,", b & 0xFF)
+                }
+                outFile << "\n};\n"
+                outFile << "const size_t bootstrap_${arch}_size = ${bytes.length};\n\n"
+                
+                // bikin alias yg dipake termux-bootstrap.c
+                if (arch == "aarch64") {
+                    outFile << "const unsigned char* blob = bootstrap_aarch64;\n"
+                    outFile << "const size_t blob_size = bootstrap_aarch64_size;\n"
+                }
+            }
+        }
+    }
+}
+
+// ganti dependsOn nya biar jalan sebelum compile
+preBuild.dependsOn generateBootstrapBlobs

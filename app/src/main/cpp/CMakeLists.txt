@@ -2,5 +2,5 @@ cmake_minimum_required(VERSION 3.4.1)
 project(termux-bootstrap)
 add_library(termux-bootstrap SHARED
     termux-bootstrap.c
-    bootstrap_blob.c
+    termux-bootstrap-zip.S
 )

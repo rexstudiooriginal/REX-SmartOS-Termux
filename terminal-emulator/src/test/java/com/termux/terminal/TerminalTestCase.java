@@ -1,4 +1,4 @@
-package com.termux.terminal;
+package rex.smart.termux.terminal;
 
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;

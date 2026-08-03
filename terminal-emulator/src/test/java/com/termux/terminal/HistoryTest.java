@@ -1,4 +1,4 @@
-package com.termux.terminal;
+package rex.smart.termux.terminal;
 
 
 public class HistoryTest extends TerminalTestCase {

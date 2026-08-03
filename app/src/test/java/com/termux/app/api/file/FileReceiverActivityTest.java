@@ -1,6 +1,6 @@
-package com.termux.app.api.file;
+package rex.smart.termux.app.api.file;
 
-import com.termux.app.api.file.FileReceiverActivity;
+import rex.smart.termux.app.api.file.FileReceiverActivity;
 
 import org.junit.Assert;
 import org.junit.Test;
